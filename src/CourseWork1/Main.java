@@ -1,3 +1,7 @@
+package CourseWork1;
+
+import javax.tools.Tool;
+
 public class Main {
     public static void main(String[] args) {
         EmployeeService employeeService = new EmployeeService();
@@ -16,7 +20,12 @@ public class Main {
         for (Employee i : employee) {
             System.out.println(i);
         }
-        System.out.println("Сумма затрат за месяц " +  employeeService.findSum(employee));
+        System.out.println("Сумма зарплат в месяц составляет: " +  employeeService.findSum(employee) + " рублей");
+        System.out.println("Среднее значение зарплат составляет " + employeeService.calculateAverageSalary(employee) + " Рублей");
+        EmployeeService.maxSalaryEmployee(employee);
+        EmployeeService.minSalaryEmployee(employee);
+        EmployeeService.printAllName(employee);
+
 
 
     }

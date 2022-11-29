@@ -1,3 +1,7 @@
+package CourseWork1;
+
+import java.util.Objects;
+
 public class Employee {
     private final int id;
     private static int count = 1;
@@ -5,7 +9,7 @@ public class Employee {
     private String middleName;
     private String lastName;
     private int department;
-    private int salary;
+    private double salary;
 
     public Employee(String firstName, String middleName, String lastName, int department, int salary) {
         this.id = count++;
@@ -36,7 +40,7 @@ public class Employee {
         this.department = department;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return this.salary;
     }
 
@@ -46,6 +50,19 @@ public class Employee {
 
     @Override
     public String toString() {
-        return id +". ФИО: " + getFirstName() + " " + getMiddleName() + " " +  getLastName() +". Отдел: " + getDepartment() +". Оклад: " + getSalary();
+        return "Номер в реестре " + id +". Ф.И.О. сотрудника: " + getFirstName() + " " + getMiddleName() + " " +  getLastName() +". Отдел: " + getDepartment() +". Оклад: " + getSalary();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id && department == employee.department && salary == employee.salary && Objects.equals(firstName, employee.firstName) && Objects.equals(middleName, employee.middleName) && Objects.equals(lastName, employee.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, middleName, lastName, department, salary);
     }
 }
